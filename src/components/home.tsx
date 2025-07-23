@@ -2,7 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { FaSearch } from "react-icons/fa";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import Header from "./header";
+import { useState } from "react";
+import { useDebounce } from "../hooks/useDebounce";
+import type { Country } from "../types";
+import Countries from "./countries";
 const Home = () => {
+  const [query, setQuery] = useState("");
   const { isPending, error, data } = useQuery({
     queryKey: ["countryData"],
     queryFn: () =>
@@ -11,6 +16,17 @@ const Home = () => {
       ),
   });
 
+  const debouncedSearch = useDebounce(query);
+
+  const filteredResult =
+    query.length > 0
+      ? data.filter((country: Country) =>
+          country.name.common
+            .toLowerCase()
+            .includes(debouncedSearch.toLowerCase())
+        )
+      : data;
+
   if (isPending) {
     return <h1>Loading...</h1>;
   }
@@ -18,7 +34,7 @@ const Home = () => {
   if (error) {
     return <h1>Error: {error.message}</h1>;
   }
-  console.log({ data });
+  console.log({ filteredResult });
   return (
     <>
       <Header />
@@ -29,12 +45,22 @@ const Home = () => {
             <input
               className="outline-none flex-1"
               placeholder="Search for a country..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
           </div>
-          <button className="w-48 shadow-md py-3 px-4">
+          <button
+            aria-label="filter region"
+            className="w-48 shadow-md py-3 px-4 flex items-center gap-4 rounded-md cursor-pointer"
+          >
             Filter by Region <MdKeyboardArrowUp />
           </button>
         </section>
+        {debouncedSearch && !filteredResult.length ? (
+          <p>Oops! No result found...</p>
+        ) : (
+          <Countries countries={filteredResult} />
+        )}
       </section>
     </>
   );
