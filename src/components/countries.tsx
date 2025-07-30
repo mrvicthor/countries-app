@@ -22,10 +22,7 @@ const Countries = ({ countries }: CountriesProp) => {
       className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mt-12"
     >
       {countries.map((country: Country, index: number) => (
-        <Link
-          key={country.name.common + index}
-          to={`/country/${country.name.common}`}
-        >
+        <Link key={country.name.common + index} to={`/country/${country.ccn3}`}>
           <motion.div
             variants={itemVariants}
             className={`rounded-md ${

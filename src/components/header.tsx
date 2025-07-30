@@ -11,7 +11,7 @@ const Header = () => {
     <header
       className={`px-4 shadow-md ${
         isDark ? "bg-[#2B3743] text-white" : "bg-white text-[#242527]"
-      } shadow-xl/30`}
+      } back-box-shadow`}
     >
       <nav className="container mx-auto max-w-7xl flex justify-between items-center h-20">
         <h1 className="text-2xl font-bold">Where in the world?</h1>

@@ -37,7 +37,7 @@ const Home = () => {
   if (error) {
     return <h1>Error: {error.message}</h1>;
   }
-  console.log({ filteredResult });
+
   return (
     <>
       <section className="max-w-7xl mx-auto flex flex-col md:flex-row space-y-12 md:space-y-0 md:justify-between md:items-center">
@@ -64,7 +64,9 @@ const Home = () => {
         </button>
       </section>
       {debouncedSearch && !filteredResult.length ? (
-        <p>Oops! No result found...</p>
+        <section className="max-w-7xl mx-auto mt-8">
+          <p>Oops! No result found...</p>
+        </section>
       ) : (
         <Countries countries={filteredResult} />
       )}
