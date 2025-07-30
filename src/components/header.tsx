@@ -6,13 +6,14 @@ const Header = () => {
   const { isDark, setIsDark } = useContext(ThemeContext) as ThemeContextType;
 
   const toggleTheme = () => setIsDark(!isDark);
-  console.log({ isDark });
 
   return (
     <header
-      className={`px-4 shadow-md ${isDark ? "bg-[#202c37]" : "bg-[#fafafa]"}`}
+      className={`px-4 shadow-md ${
+        isDark ? "bg-[#2B3743] text-white" : "bg-white text-[#242527]"
+      } shadow-xl/30`}
     >
-      <nav className="container mx-auto max-w-7xl flex justify-between items-center h-16">
+      <nav className="container mx-auto max-w-7xl flex justify-between items-center h-20">
         <h1 className="text-2xl font-bold">Where in the world?</h1>
         <button
           onClick={toggleTheme}
