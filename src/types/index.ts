@@ -35,3 +35,11 @@ type Flag = {
 type NativeName = {
   official: string;
 };
+
+export type Region =
+  | "Africa"
+  | "Americas"
+  | "Asia"
+  | "Europe"
+  | "Oceania"
+  | "All";

@@ -12,7 +12,6 @@ type CountriesProp = {
 const Countries = ({ countries }: CountriesProp) => {
   const { isDark } = useContext(ThemeContext) as ThemeContextType;
 
-  console.log(countries);
   return (
     <motion.section
       whileInView="visible"
