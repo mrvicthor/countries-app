@@ -48,7 +48,7 @@ const Home = () => {
       : filteredResult.filter((country: Country) => country.region === region);
   return (
     <>
-      <section className="relative max-w-7xl mx-auto flex flex-col md:flex-row space-y-12 md:space-y-0 md:justify-between md:items-center">
+      <section className="relative max-w-7xl mx-auto flex flex-col md:flex-row md:space-y-0 md:justify-between md:items-center">
         <div
           className={`${
             isDark ? "text-white bg-[#2B3743]" : "text-[#989898] bg-white"
@@ -64,7 +64,7 @@ const Home = () => {
         </div>
         <button
           aria-label="filter region"
-          className={`w-48 shadow-md py-4 px-4 flex items-center gap-4 rounded-md cursor-pointer ${
+          className={`w-48 shadow-md py-4 px-4 flex mt-12 md:mt-0 items-center gap-4 rounded-md cursor-pointer ${
             isDark ? "bg-[#2B3743] text-white" : "bg-white text-[#242527]"
           }`}
           onClick={() => setShowOptions(!showOptions)}
@@ -73,7 +73,7 @@ const Home = () => {
         </button>
         {showOptions && (
           <ul
-            className={`absolute right-0 top-16 z-50 w-48 rounded-md back-box-shadow py-4 px-4 space-y-1.5 ${
+            className={`absolute top-44 md:right-0 md:top-16 z-50 w-48 rounded-md back-box-shadow py-4 px-4 space-y-1.5 ${
               isDark ? "bg-[#2B3743] text-white" : "bg-white text-[#242527]"
             }`}
           >
