@@ -18,7 +18,7 @@ const CountryDetail = () => {
   const details: Country = data[0];
 
   return (
-    <section className="max-w-7xl mx-auto space-y-16">
+    <section className="max-w-7xl mx-auto space-y-16 pb-4 md:pb-0">
       {isPending && <h2>loading.....</h2>}
       {error && <h2>Error fetching data</h2>}
 
@@ -38,7 +38,7 @@ const CountryDetail = () => {
           alt={`${details.name.common} flag`}
           className=""
         />{" "}
-        <article className="pt-12">
+        <article className="pt-12 ">
           <h2 className="font-semibold text-lg">{details.name.common}</h2>
           <div className="flex justify-between mt-8">
             <ul className="flex flex-col gap-2">
